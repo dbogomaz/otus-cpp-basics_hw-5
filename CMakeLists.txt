@@ -1,13 +1,16 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 
-project(05.homework)
+project(statistics)
 
-add_executable(random_shuffle random_shuffle.cpp)
-set_target_properties(random_shuffle PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+set(SOURCES
+    src/main.cpp
+    src/statistics/min.cpp
+)
 
-add_executable(chrono_example chrono_example.cpp)
-set_target_properties(chrono_example PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-add_executable(statistics statistics.cpp)
-set_target_properties(statistics PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
-
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
+)
