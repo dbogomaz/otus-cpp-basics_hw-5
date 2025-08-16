@@ -6,6 +6,7 @@ set(SOURCES
     src/main.cpp
     src/statistics/min.cpp
     src/statistics/max.cpp
+    src/statistics/mean.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
