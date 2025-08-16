@@ -1,12 +1,22 @@
 #include <iostream>
+#include <vector>
 #include "statistics/min.h"
+#include "statistics/max.h"
+#include "statistics/mean.h"
+#include "statistics/std.h"	
+#include "statistics/pst.h"
 
 int main() {
 
-	const size_t statistics_count = 1;
+	const size_t statistics_count = 6;
 	IStatistics *statistics[statistics_count];
 
 	statistics[0] = new Min{};
+	statistics[1] = new Max{};
+	statistics[2] = new Mean{};
+	statistics[3] = new Std{};
+	statistics[4] = new Pst{90};
+	statistics[5] = new Pst{95};
 
 	double val = 0;
 	while (std::cin >> val) {

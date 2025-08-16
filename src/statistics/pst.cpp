@@ -1,12 +1,15 @@
 #include "pst.h"
-#include <cmath>
 #include <algorithm>
+#include <cmath>
+
+Pst::Pst(double percentile) : m_percentile(percentile) {
+  m_name = "pst_" + std::to_string(static_cast<int>(percentile));
+}
 
 void Pst::update(double next) {
   m_data.push_back(next);
   std::sort(m_data.begin(), m_data.end());
-  const double percentile = 90;
-  double rank = (percentile / 100.0) * m_data.size(); // Ранг перцентиля 
+  double rank = (m_percentile / 100.0) * m_data.size(); // Ранг перцентиля
   // Интерполяция
   double index = rank - 1; // Сдвиг на 1, так как индексы с 0
   int lower = static_cast<int>(index);
@@ -15,7 +18,8 @@ void Pst::update(double next) {
   if (lower + 1 < m_data.size()) {
     m_pst = m_data[lower] + fraction * (m_data[lower + 1] - m_data[lower]);
   } else {
-    m_pst = m_data[m_data.size() - 1]; // Последний элемент, если ранг выходит за пределы
+    m_pst = m_data[m_data.size() -
+                   1]; // Последний элемент, если ранг выходит за пределы
   }
 }
 
@@ -26,4 +30,4 @@ double Pst::eval() const {
   return m_pst;
 }
 
-const char *Pst::name() const { return "pst"; }
+const char *Pst::name() const { return m_name.c_str(); }
