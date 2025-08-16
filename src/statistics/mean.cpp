@@ -1,6 +1,5 @@
 #include "mean.h"
 
-
 void Mean::update(double next) {
   m_sum += next;
   ++m_count;

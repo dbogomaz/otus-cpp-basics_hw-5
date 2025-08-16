@@ -2,7 +2,6 @@
 #define MEAN_H
 
 #include "istatistics.h"
-#include <limits>
 #include <cstddef>
 
 class Mean : public IStatistics {
