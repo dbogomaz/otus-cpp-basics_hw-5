@@ -11,6 +11,6 @@ public:
   const char *name() const override;
 
 private:
-  double m_max{std::numeric_limits<double>::min()};
+  double m_max{-std::numeric_limits<double>::max()};
 };
 #endif // MAX_H
