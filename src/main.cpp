@@ -1,3 +1,4 @@
+// @file main.cpp
 #include <iostream>
 #include <vector>
 #include "statistics/min.h"
@@ -7,6 +8,8 @@
 #include "statistics/pst.h"
 
 int main() {
+
+	std::cout << "Test program for statistics calculations" << std::endl;
 
 	const size_t statistics_count = 6;
 	IStatistics *statistics[statistics_count];

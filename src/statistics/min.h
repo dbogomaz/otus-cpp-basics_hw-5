@@ -1,16 +1,17 @@
 #ifndef MIN_H
 #define MIN_H
 
+#include <optional>
+
 #include "istatistics.h"
-#include <limits>
 
 class Min : public IStatistics {
 public:
-  void update(double next) override;
-  double eval() const override;
-  const char *name() const override;
+    void update(double next) override;
+    double eval() const override;
+    const char* name() const override;
 
 private:
-  double m_min{std::numeric_limits<double>::max()};
+    std::optional<double> m_min;
 };
-#endif // MIN_H
+#endif  // MIN_H
