@@ -16,21 +16,14 @@
 // но всегда лучше обрабатывать граничные случаи.
 TEST(BugFixTests, Bug1) {
     Min min;
-    std::cout << "min.eval(): " << min.eval() << std::endl;
-    // Проверяем, что до обновления значение eval() возвращает NaN
-    EXPECT_TRUE(std::isnan(min.eval()));
+    EXPECT_THROW(min.eval(), std::runtime_error); // должно выбросить исключение
     Max max;
-    std::cout << "max.eval(): " << max.eval() << std::endl;
-    // Проверяем, что до обновления значение eval() возвращает NaN
-    EXPECT_TRUE(std::isnan(max.eval()));
+    EXPECT_THROW(max.eval(), std::runtime_error); // должно выбросить исключение
     Mean mean;
-    std::cout << "mean.eval(): " << mean.eval() << std::endl;
     EXPECT_DOUBLE_EQ(mean.eval(), 0.0); // должно быть 0, т.к. сумма 0 и count 0
     Std std;
-    std::cout << "std.eval(): " << std.eval() << std::endl;
     EXPECT_DOUBLE_EQ(std.eval(), 0.0); // должно быть 0, т.к. сумма 0 и count 0
     Pst pst(90);
-    std::cout << "pst.eval(): " << pst.eval() << std::endl;
     EXPECT_DOUBLE_EQ(pst.eval(), 0.0); // должно быть 0,
 }
 
