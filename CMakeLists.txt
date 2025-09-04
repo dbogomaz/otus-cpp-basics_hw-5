@@ -46,7 +46,7 @@ target_include_directories(bug_fix_test PRIVATE
 
 # Линковка тестов с gtest и gtest_main
 target_link_libraries(bug_fix_test PRIVATE 
-    gtest
+    #gtest
     gtest_main
 )
 
