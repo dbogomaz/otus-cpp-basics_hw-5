@@ -3,11 +3,10 @@
 
 void Std::update(double next) {
   m_data.push_back(next);
-  m_sum += next;
-  double mean = m_sum / m_data.size();
+  m_mean.update(next);
   double varianceSum{0.0};
   for (const auto &value : m_data) {
-    varianceSum += (value - mean) * (value - mean);
+    varianceSum += (value - m_mean.eval()) * (value - m_mean.eval());
   }
   m_std = std::sqrt(varianceSum / m_data.size());
 }

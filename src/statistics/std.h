@@ -3,6 +3,7 @@
 
 #include "istatistics.h"
 #include <vector>
+#include "mean.h"
 
 class Std : public IStatistics {
 public:
@@ -12,7 +13,7 @@ public:
 
 private:
   std::vector<double> m_data;
+  Mean m_mean;
   double m_std{0.0};
-  double m_sum{0.0};
 };
 #endif // STD_H
