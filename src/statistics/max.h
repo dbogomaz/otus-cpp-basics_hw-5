@@ -1,16 +1,17 @@
 #ifndef MAX_H
 #define MAX_H
 
-#include "istatistics.h"
 #include <optional>
+
+#include "istatistics.h"
 
 class Max : public IStatistics {
 public:
-  void update(double next) override;
-  double eval() const override;
-  const char *name() const override;
+    void update(double next) override;
+    double eval() const override;
+    const char* name() const override;
 
 private:
-  std::optional<double> m_max;
+    std::optional<double> m_max;
 };
-#endif // MAX_H
+#endif  // MAX_H

@@ -1,4 +1,5 @@
 #include "min.h"
+
 #include <stdexcept>
 
 void Min::update(double next) {

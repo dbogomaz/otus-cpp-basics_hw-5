@@ -16,15 +16,15 @@
 // но всегда лучше обрабатывать граничные случаи.
 TEST(BugFixTests, Bug1) {
     Min min;
-    EXPECT_THROW(min.eval(), std::runtime_error); // должно выбросить исключение
+    EXPECT_THROW(min.eval(), std::runtime_error);  // должно выбросить исключение
     Max max;
-    EXPECT_THROW(max.eval(), std::runtime_error); // должно выбросить исключение
+    EXPECT_THROW(max.eval(), std::runtime_error);  // должно выбросить исключение
     Mean mean;
-    EXPECT_DOUBLE_EQ(mean.eval(), 0.0); // должно быть 0, т.к. сумма 0 и count 0
+    EXPECT_DOUBLE_EQ(mean.eval(), 0.0);  // должно быть 0, т.к. сумма 0 и count 0
     Std std;
-    EXPECT_DOUBLE_EQ(std.eval(), 0.0); // должно быть 0, т.к. сумма 0 и count 0
+    EXPECT_DOUBLE_EQ(std.eval(), 0.0);  // должно быть 0, т.к. сумма 0 и count 0
     Pst pst(90);
-    EXPECT_DOUBLE_EQ(pst.eval(), 0.0); // должно быть 0,
+    EXPECT_DOUBLE_EQ(pst.eval(), 0.0);  // должно быть 0,
 }
 
 // 2.Вывод этого кода обескураживает, точно стоит исправить:
