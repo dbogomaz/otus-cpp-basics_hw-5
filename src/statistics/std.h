@@ -14,6 +14,5 @@ public:
 private:
   std::vector<double> m_data;
   Mean m_mean;
-  double m_std{0.0};
 };
 #endif // STD_H

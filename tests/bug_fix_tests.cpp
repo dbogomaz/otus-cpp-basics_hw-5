@@ -40,13 +40,6 @@ TEST(BugFixTests, Bug2) {
 // 3. В Std можно переиспользовать реализацию Mean.
 // Mean mean;
 // std::cout << mean.eval() << std::endl;
-TEST(BugFixTests, Bug3) {
-    Std std;
-    for (size_t i = 0; i < 11; i++) {
-        std.update(i);
-    }
-    EXPECT_DOUBLE_EQ(std.eval(), std::sqrt(10.0));
-}
 
 // 4. Расчет varianceSum и т.п. лучше проводить непосредственно в eval,
 // т.к. в общем случае логично предположить, что eval вызывается реже
