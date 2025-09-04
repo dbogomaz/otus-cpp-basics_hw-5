@@ -41,11 +41,11 @@ TEST(BugFixTests, Bug2) {
 // Mean mean;
 // std::cout << mean.eval() << std::endl;
 TEST(BugFixTests, Bug3) {
-    Mean mean;
+    Std std;
     for (size_t i = 0; i < 11; i++) {
-        mean.update(i);
+        std.update(i);
     }
-    EXPECT_DOUBLE_EQ(mean.eval(), 5.0);
+    EXPECT_DOUBLE_EQ(std.eval(), std::sqrt(10.0));
 }
 
 // 4. Расчет varianceSum и т.п. лучше проводить непосредственно в eval,
