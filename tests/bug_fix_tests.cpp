@@ -16,9 +16,22 @@
 // но всегда лучше обрабатывать граничные случаи.
 TEST(BugFixTests, Bug1) {
     Min min;
-    std::cout << "Initial min: " << min.eval() << std::endl;
+    std::cout << "min.eval(): " << min.eval() << std::endl;
     // Проверяем, что до обновления значение eval() возвращает NaN
     EXPECT_TRUE(std::isnan(min.eval()));
+    Max max;
+    std::cout << "max.eval(): " << max.eval() << std::endl;
+    // Проверяем, что до обновления значение eval() возвращает NaN
+    EXPECT_TRUE(std::isnan(max.eval()));
+    Mean mean;
+    std::cout << "mean.eval(): " << mean.eval() << std::endl;
+    EXPECT_DOUBLE_EQ(mean.eval(), 0.0); // должно быть 0, т.к. сумма 0 и count 0
+    Std std;
+    std::cout << "std.eval(): " << std.eval() << std::endl;
+    EXPECT_DOUBLE_EQ(std.eval(), 0.0); // должно быть 0, т.к. сумма 0 и count 0
+    Pst pst(90);
+    std::cout << "pst.eval(): " << pst.eval() << std::endl;
+    EXPECT_DOUBLE_EQ(pst.eval(), 0.0); // должно быть 0,
 }
 
 // 2.Вывод этого кода обескураживает, точно стоит исправить:

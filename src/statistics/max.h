@@ -2,7 +2,7 @@
 #define MAX_H
 
 #include "istatistics.h"
-#include <limits>
+#include <optional>
 
 class Max : public IStatistics {
 public:
@@ -11,6 +11,6 @@ public:
   const char *name() const override;
 
 private:
-  double m_max{-std::numeric_limits<double>::max()};
+  std::optional<double> m_max;
 };
 #endif // MAX_H
