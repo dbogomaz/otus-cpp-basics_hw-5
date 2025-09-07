@@ -3,13 +3,13 @@
 
 #include <cmath>
 #include <sstream>
-
-#include "../src/statistics/istatistics.h"
-#include "../src/statistics/max.h"
-#include "../src/statistics/mean.h"
-#include "../src/statistics/min.h"
-#include "../src/statistics/pst.h"
-#include "../src/statistics/std.h"
+// Полный путь не нужен, т.к. в CMakeLists.txt добавлен include_directories
+#include "istatistics.h"
+#include "max.h"
+#include "mean.h"
+#include "min.h"
+#include "pst.h"
+#include "std.h"
 
 // 1. Вывод может быть неожиданным для пользователя нашего класса:
 // std::cout << Min{}.eval() << std::endl; Мелочь, не оговоренная явно в задании,
