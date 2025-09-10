@@ -48,30 +48,28 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_INCLUDES})
 # ********************** Настройка основного проекта в виде библиотеки *************
 # 8. Добавление библиотеки (файлов). Если файлов много, то лучше
 #    перечислить их в переменной и потом использовать эту переменную ${SOURCES_LIB}
-set(SOURCES_LIB
-    src/statistics/min.cpp
-    src/statistics/max.cpp
-    src/statistics/mean.cpp
-    src/statistics/std.cpp
-    src/statistics/pst.cpp
-)
+# 
+
 # 9. Добавление библиотеки (файлов). STATIC - статическая, SHARED - динамическая
 #    Если включаются шаблонные классы в виде .h/.ipp ,то нужно указать INTERFACE
 #    потому что в библиотеку они не компилируются.
-add_library(${PROJECT_NAME}_lib STATIC ${SOURCES_LIB})
+# add_library(${PROJECT_NAME}_lib STATIC ${SOURCES_LIB})
 
 # 10. Установка свойств для цели (target)
-set_target_properties(${PROJECT_NAME}_lib PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-    CXX_EXTENSIONS OFF
-)
+# set_target_properties(${PROJECT_NAME}_lib PROPERTIES
+#     CXX_STANDARD 17
+#     CXX_STANDARD_REQUIRED ON
+#     CXX_EXTENSIONS OFF
+# )
 
 # 11. Добавление путей к заголовочным файлам
-target_include_directories(${PROJECT_NAME}_lib PUBLIC ${${PROJECT_NAME}_INCLUDES})
+# target_include_directories(${PROJECT_NAME}_lib PUBLIC ${${PROJECT_NAME}_INCLUDES})
 
 # 12. Линковка библиотеки с исполняемым файлом
-target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_lib)
+# target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_lib)
+
+add_subdirectory(src/statistics)
+target_link_libraries(${PROJECT_NAME} statistics_lib)
 
 # теперь можено удалить из set(SOURCES ...) файлы, которые есть в библиотеке
 
@@ -105,7 +103,7 @@ set_target_properties(bug_fix_test PROPERTIES
 # 17. Добавление путей к заголовочным файлам
 #     После этого в исходных файлах можно будет писать #include "min.h" не указывая путь
 #     до файла.
-#target_include_directories(bug_fix_test PRIVATE ${${PROJECT_NAME}_INCLUDES})
+target_include_directories(bug_fix_test PRIVATE ${${PROJECT_NAME}_INCLUDES})
 
 # 18. Линковка тестов с библиотекой проекта и gtest и gtest_main
 #     если линкуем в библиотекой проекта, то можно удалить из TEST_SOURCE файлы
@@ -115,7 +113,8 @@ set_target_properties(bug_fix_test PROPERTIES
 #     Если используется GTest::gtest, Можно убрать строки с googletest/googletest/include
 #     и googlemock/include из target_include_directories для тестов — они добавятся автоматически.
 target_link_libraries(bug_fix_test PRIVATE
-    ${PROJECT_NAME}_lib
+    # ${PROJECT_NAME}_lib
+    statistics_lib
     #GTest::gtest
     GTest::gtest_main
 )
